@@ -1,20 +1,20 @@
-package com.hello_world.first_api_java;
+package com.hello_world.first_api_java.students;
 
-public class Student {
+public class StudentEntity {
 
     private int id;
     private String name;
     private int age;
     private String course;
 
-    public Student(int id, String name, int age, String course) {
+    public StudentEntity(int id, String name, int age, String course) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.course = course;
     }
 
-    public Student(int id) {
+    public StudentEntity(int id) {
         this.id = id;
     }
 
