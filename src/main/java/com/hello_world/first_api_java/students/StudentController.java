@@ -2,6 +2,7 @@ package com.hello_world.first_api_java.students;
 
 import com.hello_world.first_api_java.ReturnMessage;
 import com.hello_world.first_api_java.exceptions.StudentNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,7 +10,13 @@ import java.util.ArrayList;
 @RestController
 public class StudentController {
 
-    private StudentService studentService = new StudentService();
+
+    private StudentService studentService;
+
+    @Autowired
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @GetMapping("/")
     public ArrayList<StudentEntity> getStudents(){

@@ -2,11 +2,12 @@ package com.hello_world.first_api_java.students;
 
 import com.hello_world.first_api_java.ReturnMessage;
 import com.hello_world.first_api_java.exceptions.StudentNotFoundException;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 
+@Service
 public class StudentService {
     public StudentService() {}
 

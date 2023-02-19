@@ -14,9 +14,6 @@ public class StudentEntity {
         this.course = course;
     }
 
-    public StudentEntity(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
