@@ -1,7 +1,6 @@
 package com.hello_world.first_api_java.students;
 
 import com.hello_world.first_api_java.ReturnMessage;
-import com.hello_world.first_api_java.exceptions.StudentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +11,6 @@ public class StudentController {
 
 
     private StudentService studentService;
-
     @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;

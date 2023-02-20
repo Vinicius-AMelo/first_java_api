@@ -1,7 +1,14 @@
 package com.hello_world.first_api_java.students;
 
+import jakarta.persistence.*;
+
+@Entity(name = "student")
+@Table
 public class StudentEntity {
 
+    @Id
+    @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
     private int id;
     private String name;
     private int age;
@@ -14,6 +21,9 @@ public class StudentEntity {
         this.course = course;
     }
 
+    public StudentEntity() {
+
+    }
 
     public String getName() {
         return name;
