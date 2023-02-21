@@ -2,53 +2,52 @@ package com.hello_world.first_api_java.students;
 
 import com.hello_world.first_api_java.ReturnMessage;
 import com.hello_world.first_api_java.exceptions.StudentNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class StudentService {
-    public StudentService() {}
 
-    private ArrayList<StudentEntity> list = new ArrayList<>();
-    private int id = 0;
+    private final StudentRepository studentRepository;
 
-    public ArrayList<StudentEntity> getAllStudents(){
-        return list;
+    @Autowired
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 
-    public StudentEntity getOneStudent(int id){
-        StudentEntity studentEntity = list.stream().filter(obj -> obj.getId() == id).findFirst().orElse(null);
-
-        if(studentEntity == null) throw new StudentNotFoundException("Estudante não encontrado");
-
-        return studentEntity;
+    public List<StudentEntity> getAllStudents() {
+        return studentRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
-    public ReturnMessage setStudents(StudentEntity newStudentEntity){
-        newStudentEntity.setId(id++);
-        list.add(newStudentEntity);
+    public StudentEntity getOneStudent(Long id) {
+        return studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("Estudante não encontrado"));
+    }
+
+    public ReturnMessage setStudents(StudentEntity studentDTO) {
+        studentRepository.save(studentDTO);
+
         return new ReturnMessage("Estudante Cadastrado");
     }
 
-    public ReturnMessage putStudents(int id, StudentEntity newStudentEntity){
-        int index = list.indexOf(list.stream().filter(obj -> obj.getId() == id).findFirst().orElse(null));
+    public ReturnMessage putStudents(Long id, StudentEntity studentDTO) {
+        StudentEntity student = studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("Estudante não encontrado"));
+        student.setName(studentDTO.getName());
+        student.setAge(studentDTO.getAge());
+        student.setCourse(studentDTO.getCourse());
+        studentRepository.save(student);
 
-        if (index < 0) throw new StudentNotFoundException("Estudante não encontrado");
-
-        newStudentEntity.setId(id);
-        list.set(index, newStudentEntity);
-        return new ReturnMessage("Estudante " + id + " Modificado");
+        return new ReturnMessage("Estudante " + student.getId() + " Modificado");
 
     }
 
-    public ReturnMessage deleteStudents(int id){
-        int index = list.indexOf(list.stream().filter(obj -> obj.getId() == id).findFirst().orElse(null));
+    public ReturnMessage deleteStudents(Long id) {
+        StudentEntity student = studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("Estudante não encontrado"));
+        studentRepository.deleteById(student.getId());
 
-        if (index < 0) throw new StudentNotFoundException("Estudante não encontrado");
-
-        list.remove(index);
         return new ReturnMessage("Estudante " + id + " Removido");
 
     }

@@ -4,7 +4,7 @@ import com.hello_world.first_api_java.ReturnMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class StudentController {
@@ -17,12 +17,12 @@ public class StudentController {
     }
 
     @GetMapping("/")
-    public ArrayList<StudentEntity> getStudents(){
+    public List<StudentEntity> getStudents(){
         return studentService.getAllStudents();
     }
 
     @GetMapping("/{id}")
-    public StudentEntity getOneStudent(@PathVariable("id") int id){
+    public StudentEntity getOneStudent(@PathVariable("id") Long id){
         return studentService.getOneStudent(id);
     }
 
@@ -32,12 +32,12 @@ public class StudentController {
     }
 
     @PutMapping("/")
-    public ReturnMessage putStudents(@RequestParam int id, @RequestBody StudentEntity newStudentEntity){
+    public ReturnMessage putStudents(@RequestParam Long id, @RequestBody StudentEntity newStudentEntity){
         return studentService.putStudents(id, newStudentEntity);
     }
 
     @DeleteMapping("/")
-    public ReturnMessage deleteStudents(@RequestParam int id){
+    public ReturnMessage deleteStudents(@RequestParam Long id){
         return studentService.deleteStudents(id);
     }
 }

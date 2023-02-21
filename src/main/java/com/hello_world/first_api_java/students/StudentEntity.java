@@ -9,12 +9,12 @@ public class StudentEntity {
     @Id
     @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
-    private int id;
+    private Long id;
     private String name;
     private int age;
     private String course;
 
-    public StudentEntity(int id, String name, int age, String course) {
+    public StudentEntity(Long id, String name, int age, String course) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -29,11 +29,11 @@ public class StudentEntity {
         return name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
