@@ -30,7 +30,7 @@ public class StudentService {
     public ReturnMessage setStudents(StudentEntity studentDTO) {
         studentRepository.save(studentDTO);
 
-        return new ReturnMessage("Estudante Cadastrado");
+        return new ReturnMessage("O estudante foi cadastrado");
     }
 
     public ReturnMessage putStudents(Long id, StudentEntity studentDTO) {
