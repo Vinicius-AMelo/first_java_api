@@ -1,0 +1,29 @@
+version: "1"
+services:
+  app:
+    image: .
+    env:
+      - SPRING_PROFILES_ACTIVE=prod
+    ports:
+      - 8080
+    volumes:
+      - type: bind
+        source: .
+        target: /home/usr/app
+    workingDir: /home/usr/app
+    dependsOn:
+      - db
+
+  db:
+    image: .docker/postgres
+    restart: always
+    tty: true
+    ports:
+      - 5432
+    volumes:
+      - type: bind
+        source: .docker/dbdata
+        target: /var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=postgres
