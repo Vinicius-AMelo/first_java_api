@@ -2,7 +2,8 @@
 version: "1"
 services:
   app:
-    image: .
+    build:
+      context: .
     env:
       - SPRING_PROFILES_ACTIVE=prod
     ports:
@@ -15,7 +16,8 @@ services:
     dependsOn:
       - db
   db:
-    image: .docker/postgres
+    build:
+      context: .docker/postgres
     restart: always
     tty: true
     ports:
