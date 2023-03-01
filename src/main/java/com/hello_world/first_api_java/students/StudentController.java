@@ -10,7 +10,7 @@ import java.util.List;
 public class StudentController {
 
 
-    private StudentService studentService;
+    private final StudentService studentService;
     @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -27,8 +27,8 @@ public class StudentController {
     }
 
     @PostMapping("/")
-    public ReturnMessage setStudents(@RequestBody StudentEntity newStudentEntity){
-        return studentService.setStudents(newStudentEntity);
+    public ReturnMessage postStudents(@RequestBody StudentEntity newStudentEntity){
+        return studentService.postStudents(newStudentEntity);
     }
 
     @PutMapping("/")

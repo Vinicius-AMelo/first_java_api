@@ -13,11 +13,8 @@ import java.util.List;
 public class StudentService {
 
     private final StudentRepository studentRepository;
-
     @Autowired
-    public StudentService(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
+    public StudentService(StudentRepository studentRepository) {this.studentRepository = studentRepository;}
 
     public List<StudentEntity> getAllStudents() {
         return studentRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
@@ -27,10 +24,10 @@ public class StudentService {
         return studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("Estudante não encontrado"));
     }
 
-    public ReturnMessage setStudents(StudentEntity studentDTO) {
+    public ReturnMessage postStudents(StudentEntity studentDTO) {
         studentRepository.save(studentDTO);
 
-        return new ReturnMessage("O estudante foi cadastrado");
+        return new ReturnMessage("Estudante cadastrado");
     }
 
     public ReturnMessage putStudents(Long id, StudentEntity studentDTO) {
@@ -40,7 +37,7 @@ public class StudentService {
         student.setCourse(studentDTO.getCourse());
         studentRepository.save(student);
 
-        return new ReturnMessage("Estudante " + student.getId() + " Modificado");
+        return new ReturnMessage("Estudante " + student.getId() + " modificado");
 
     }
 
@@ -48,7 +45,7 @@ public class StudentService {
         StudentEntity student = studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("Estudante não encontrado"));
         studentRepository.deleteById(student.getId());
 
-        return new ReturnMessage("Estudante " + id + " Removido");
+        return new ReturnMessage("Estudante " + id + " removido");
 
     }
 }
