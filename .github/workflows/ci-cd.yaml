@@ -24,6 +24,8 @@ jobs:
           server-password: GITHUB_TOKEN
           overwrite-settings: true
           job-status: success
+      - name: Grant execute permission to mvnw
+        run: chmod +x mvnw
       - name: Build JAR
         run: ./mvnw package -DskipTests
       - name: Build Docker image - app
