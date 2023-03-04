@@ -61,8 +61,8 @@ jobs:
     steps:
       - name: Copy files to EC2 instance
         uses: SamKirkland/web-deploy@v1
-          target-server: ${{ secrets.HOST }}
-          remote-user: ${{ secrets.USERNAME }}
+          target-server: 54.233.85.179
+          remote-user: ubuntu
           private-ssh-key: ${{ secrets.KEY }}
           destination-path: "/home/ubuntu/api_java"
       - name: Deploy Docker image
