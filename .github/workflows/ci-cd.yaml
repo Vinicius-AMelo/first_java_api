@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: java-api
     steps:
-      - name: Clone repository
-        run: git clone https://github.com/Vinicius-AMelo/first_java_api.git
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Set up JDK 17
@@ -68,5 +66,6 @@ jobs:
           key: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
+            git clone https://github.com/Vinicius-AMelo/first_java_api.git
             docker-compose pull
             docker-compose up -d
