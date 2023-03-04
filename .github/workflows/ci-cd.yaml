@@ -65,7 +65,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "./"
+          source: "./*"
           target: "/home/ubuntu/api_java"
           script: |
             ls
