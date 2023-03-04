@@ -69,7 +69,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "first_api_java/"
+          source: "first_api_java"
           target: "/home/ubuntu/api_java"
       - name: Deploy Docker image
         uses: appleboy/ssh-action@master
