@@ -37,7 +37,7 @@ public class StudentService {
         student.setCourse(studentDTO.getCourse());
         studentRepository.save(student);
 
-        return new ReturnMessage("O Estudante " + student.getId() + " modificado");
+        return new ReturnMessage("O Estudante " + student.getId() + " foi modificado");
 
     }
 
@@ -45,7 +45,7 @@ public class StudentService {
         StudentEntity student = studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("Estudante não encontrado"));
         studentRepository.deleteById(student.getId());
 
-        return new ReturnMessage("O Estudante " + id + " removido");
+        return new ReturnMessage("O Estudante " + id + " foi removido");
 
     }
 }
