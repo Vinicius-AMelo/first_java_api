@@ -67,6 +67,10 @@ jobs:
           key: ${{ secrets.KEY }}
           source: "."
           target: "/home/ubuntu/api_java"
+          script: |
+            ls
+            ls -a
+            pwd
       - name: Deploy Docker image
         uses: appleboy/ssh-action@master
         with:
