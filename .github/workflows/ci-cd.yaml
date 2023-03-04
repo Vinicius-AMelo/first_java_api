@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: java-api
     steps:
+      - name: Clone repository
+        run: git clone https://github.com/Vinicius-AMelo/first_java_api.git
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Set up JDK 17
