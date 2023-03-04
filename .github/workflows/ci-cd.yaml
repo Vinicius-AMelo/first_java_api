@@ -53,20 +53,29 @@ jobs:
           tags: ${{ secrets.IMAGE_NAME }}:spring_api-db
           # remove 'dockerfile', 'username', 'password'
   deploy:
+
     name: Deploy Docker image
     runs-on: ubuntu-latest
     needs: build
     environment: java-api
     steps:
+      - name: Copy files to EC2 instance
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: "./*"
+          target: "/home/ubuntu/api_java"
       - name: Deploy Docker image
         uses: appleboy/ssh-action@master
-
-        run: git clone https://github.com/Vinicius-AMelo/first_java_api.git
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
+            pwd
             docker-compose pull
             docker-compose up -d
