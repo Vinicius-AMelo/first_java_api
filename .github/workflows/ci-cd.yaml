@@ -8,7 +8,7 @@ jobs:
   build:
     name: Build and push Docker image
     runs-on: ubuntu-latest
-    environment: java_api
+    environment: java-api
     steps:
       - name: Print the value of IMAGE_NAME
         run: echo ${{ secrets.IMAGE_NAME }}
@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
 
     needs: build
-    environment: java_api
+    environment: java-api
     steps:
       - name: Deploy Docker image
         uses: appleboy/ssh-action@master
