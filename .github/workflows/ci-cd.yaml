@@ -33,7 +33,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: viniamelo/first_java_api:spring_api
+          tags: ${{ secrets.IMAGE_NAME }}:spring_api
           build-args: |
             - POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
             - POSTGRES_USER=${{ secrets.POSTGRES_USER }}
