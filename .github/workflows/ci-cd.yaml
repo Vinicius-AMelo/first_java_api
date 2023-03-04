@@ -62,12 +62,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Copy files to EC2 instance
-        uses: SamKirkland/web-deploy@v1
+        uses: appleboy/scp-action@master
         with:
-          target-server: 54.233.85.179
-          remote-user: ubuntu
-          private-ssh-key: ${{ secrets.KEY }}
-          destination-path: "/home/ubuntu/api_java"
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          source: "./*"
+          target: "/home/ubuntu/api_java"
       - name: Deploy Docker image
         uses: appleboy/ssh-action@master
         with:
@@ -79,4 +80,4 @@ jobs:
             chmod +x ./entrypoint.sh
             pwd
             sudo docker-compose pull
-            sudo docker-compose up -d
+            sudo docker-compose up
