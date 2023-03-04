@@ -61,7 +61,10 @@ jobs:
     steps:
       - name: Copy files to EC2 instance
         uses: appleboy/scp-action@master
-        run: ls
+        script: |
+          ls
+          ls -a
+          pwd
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
