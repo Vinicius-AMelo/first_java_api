@@ -59,6 +59,8 @@ jobs:
     needs: build
     environment: java-api
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Copy files to EC2 instance
         uses: SamKirkland/web-deploy@v1
         with:
