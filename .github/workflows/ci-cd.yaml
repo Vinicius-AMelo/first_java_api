@@ -64,7 +64,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PUB_KEY }}
+          key: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: "./"
           target: "/home/ubuntu/api_java"
