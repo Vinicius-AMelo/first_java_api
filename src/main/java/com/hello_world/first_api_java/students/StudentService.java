@@ -27,7 +27,7 @@ public class StudentService {
     public ReturnMessage postStudents(StudentEntity studentDTO) {
         studentRepository.save(studentDTO);
 
-        return new ReturnMessage("Estudante cadastrado");
+        return new ReturnMessage("O Estudante foi cadastrado");
     }
 
     public ReturnMessage putStudents(Long id, StudentEntity studentDTO) {
@@ -37,7 +37,7 @@ public class StudentService {
         student.setCourse(studentDTO.getCourse());
         studentRepository.save(student);
 
-        return new ReturnMessage("Estudante " + student.getId() + " modificado");
+        return new ReturnMessage("O Estudante " + student.getId() + " modificado");
 
     }
 
@@ -45,7 +45,7 @@ public class StudentService {
         StudentEntity student = studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("Estudante não encontrado"));
         studentRepository.deleteById(student.getId());
 
-        return new ReturnMessage("Estudante " + id + " removido");
+        return new ReturnMessage("O Estudante " + id + " removido");
 
     }
 }

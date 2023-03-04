@@ -78,7 +78,6 @@ jobs:
           script: |
             cd api_java
             chmod +x ./entrypoint.sh
-            pwd
             sudo docker-compose pull
-            sudo docker-compose down
+            sudo docker-compose stop
             sudo docker-compose up
