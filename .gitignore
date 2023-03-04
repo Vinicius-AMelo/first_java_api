@@ -3,6 +3,9 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+/dbdata
+dbdata/
+.docker/dbdata
 
 ### STS ###
 .apt_generated
