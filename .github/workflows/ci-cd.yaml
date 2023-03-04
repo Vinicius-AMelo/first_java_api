@@ -66,7 +66,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          source: "./*"
+          source: "./"
           target: "/home/ubuntu/api_java"
       - name: Deploy Docker image
         uses: appleboy/ssh-action@master
