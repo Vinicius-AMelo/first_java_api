@@ -60,6 +60,7 @@ jobs:
     steps:
       - name: Deploy Docker image
         uses: appleboy/ssh-action@master
+
         run: git clone https://github.com/Vinicius-AMelo/first_java_api.git
         with:
           host: ${{ secrets.HOST }}
