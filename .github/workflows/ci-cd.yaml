@@ -65,7 +65,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
           source: "./"
           target: "/home/ubuntu/api_java"
       - name: Deploy Docker image
