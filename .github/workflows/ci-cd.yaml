@@ -61,6 +61,7 @@ jobs:
     steps:
       - name: Copy files to EC2 instance
         uses: SamKirkland/web-deploy@v1
+        with:
           target-server: 54.233.85.179
           remote-user: ubuntu
           private-ssh-key: ${{ secrets.KEY }}
