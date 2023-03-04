@@ -68,10 +68,6 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "./*"
           target: "/home/ubuntu/api_java"
-          script: |
-            pwd
-            docker-compose pull
-            docker-compose up -d
       - name: Deploy Docker image
         uses: appleboy/ssh-action@master
         with:
