@@ -60,12 +60,11 @@ jobs:
     environment: java-api
     steps:
       - name: Copy files to EC2 instance
-        uses: appleboy/scp-action@master
+        uses: deybhayden/scp-to-ec2-action@v1.0.0
         with:
-          host: ${{ secrets.HOST }}
+          server: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
+          private_key: ${{ secrets.PASSWORD }}
           source: "./"
           target: "/home/ubuntu/api_java"
       - name: Deploy Docker image
